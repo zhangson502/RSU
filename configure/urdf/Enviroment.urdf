@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot name="Env">
+<!-- RSU-->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="6.0" radius="0.2"/>
+	</geometry>
+	<origin rpy="0 0 0" xyz="0 0 3"/>
+    <material name="white">
+		<color rgba=".8 .8 .8 1"/>
+	</material>
+    </visual>
+ </link>
+
+ <link name="Cross">
+    <visual>
+      <geometry>
+        <cylinder length="4" radius="0.1"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="B_C" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="Cross"/>
+    <origin rpy="-1.57075 0  0" xyz="0 2 5.7"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+	<link name="Radar">
+		<visual>
+		<geometry>
+		<cylinder length="0.3" radius="0.2"/>
+		</geometry>
+		<material name="blue">
+		<color rgba="1.0 0.0 0.1 1"/>
+		</material>
+		</visual>
+	</link>
+	<joint name="C_R" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="Cross"/>
+    <child link="Radar"/>
+    <origin rpy="0 1.57075 0" xyz="0 0.15 0"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+</robot>
+
